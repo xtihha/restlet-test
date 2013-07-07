@@ -5,6 +5,7 @@ import org.restlet.representation.StringRepresentation;
 import org.restlet.resource.Get;
 import org.restlet.resource.ServerResource;
 
+@Deprecated
 public class Echo extends ServerResource{
     static{
         System.out.println("echo be initialized");
