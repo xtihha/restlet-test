@@ -28,16 +28,5 @@
         <servlet-name>restlet-test-servlet</servlet-name>
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
-        
-    <!--
-    <filter>
-        <filter-name>MonitoringFilter</filter-name>
-        <filter-class>com.meituan.service.mobile.jmonitor.filter.MonitoringFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>MonitoringFilter</filter-name>
-        <url-pattern>/api/*</url-pattern>
-    </filter-mapping>
-     -->
-     
+             
 </web-app>
