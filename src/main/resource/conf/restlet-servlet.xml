@@ -16,7 +16,7 @@
     <bean name="restRoute" class="org.restlet.ext.spring.SpringRouter">
         <property name="attachments">
             <map>
-                <entry key="/items/{id}">
+                <entry key="/item/{id}">
                     <bean class="org.restlet.ext.spring.SpringFinder">
                         <lookup-method name="create" bean="itemResource" />
                     </bean>

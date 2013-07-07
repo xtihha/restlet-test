@@ -1,0 +1,4 @@
+mvn clean package && jetty stop && cp target/restlet-test.war jetty/webapps && jetty start
+
+curl http://localhost:8080/restlet-test/api/echo.json
+curl http://localhost:8080/restlet-test/api/item/1
