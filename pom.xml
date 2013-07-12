@@ -1,129 +1,142 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.xtihha.study</groupId>
-  <artifactId>restlet-test</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xtihha.study</groupId>
+	<artifactId>restlet-test</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 
-  <name>restlet-test</name>
-  <url>http://maven.apache.org</url>
+	<name>restlet-test</name>
+	<url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <junit.version>3.8.1</junit.version>
-    <servlet-api.version>2.4</servlet-api.version>
-    <maven-resources-plugin.version>2.5</maven-resources-plugin.version>
-    <maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
-    <org.springframework-version>3.1.2.RELEASE</org.springframework-version>
-    <org.restlet.version>2.0.14</org.restlet.version>
-    <org.restlet.ext.servlet.version>2.0.14</org.restlet.ext.servlet.version>
-  </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit.version>3.8.1</junit.version>
+		<servlet-api.version>2.4</servlet-api.version>
+
+		<maven-resources-plugin.version>2.5</maven-resources-plugin.version>
+		<maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
+
+		<org.springframework-version>3.1.2.RELEASE</org.springframework-version>
+		<org.restlet.version>2.0.14</org.restlet.version>
+		<org.restlet.ext.servlet.version>2.0.14</org.restlet.ext.servlet.version>
+
+		<log4j.version>1.2.11</log4j.version>
+		<commons-logging.version>1.1</commons-logging.version>
+		<slf4j-log4j12.version>1.6.4</slf4j-log4j12.version>
+	</properties>
 
 
-  <dependencies>
-    <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>${junit.version}</version>
-        <scope>test</scope>
-    </dependency>
-    <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>servlet-api</artifactId>
-        <version>${servlet-api.version}</version>
-        <scope>provided</scope>
-    </dependency>
-    <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${org.springframework-version}</version>
-    </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>    
-    
-    <dependency>
-            <groupId>org.restlet.jee</groupId>
-            <artifactId>org.restlet</artifactId>
-            <version>${org.restlet.version}</version>
-    </dependency>
-    <dependency>
-            <groupId>org.restlet.jee</groupId>
-            <artifactId>org.restlet.ext.spring</artifactId>
-            <version>${org.restlet.ext.servlet.version}</version>
-        </dependency>
-     <dependency>
-            <groupId>org.restlet.jee</groupId>
-            <artifactId>org.restlet.ext.json</artifactId>
-            <version>2.0.10</version>
-        </dependency>
-        
-  </dependencies>
-  
-    <build>
-        <finalName>restlet-test</finalName>
-        <resources>
-        <!-- 
-            <resource>
-                <directory>src/main/webapp/WEB-INF</directory>
-                <filtering>true</filtering>
-            </resource>
-             -->
-             
-             <resource>
-                <directory>src/main/resource</directory>
-                <filtering>true</filtering>
-            </resource>
-             
-        </resources>
-        
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>${maven-resources-plugin.version}</version>
-                <configuration>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-         
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>${servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.restlet.jee</groupId>
+			<artifactId>org.restlet</artifactId>
+			<version>${org.restlet.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.restlet.jee</groupId>
+			<artifactId>org.restlet.ext.spring</artifactId>
+			<version>${org.restlet.ext.servlet.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.restlet.jee</groupId>
+			<artifactId>org.restlet.ext.json</artifactId>
+			<version>2.0.10</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons-logging.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j-log4j12.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>restlet-test</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resource</directory>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resources-plugin.version}</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
             <!-- 
-            <plugin>
-              <groupId>org.mortbay.jetty</groupId>
-              <artifactId>maven-jetty-plugin</artifactId>
-              <version>6.1.26</version>
-              <configuration>
-                <webApp>${basedir}/target/movie.war</webApp>
-                <connectors>
-                <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                    <port>8888</port>
-                  </connector>
-                </connectors>
-                <contextPath>/</contextPath>
-                <scanIntervalSeconds>0</scanIntervalSeconds>
-              </configuration>
-            </plugin>
-             -->
-        </plugins>
-    </build>
-      
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.1.26</version>
+				<configuration>
+					<webApp>${basedir}/target/movie.war</webApp>
+					<connectors>
+						<connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+							<port>8888</port>
+						</connector>
+					</connectors>
+					<contextPath>/</contextPath>
+					<scanIntervalSeconds>0</scanIntervalSeconds>
+				</configuration>
+			</plugin>
+			-->
+		</plugins>
+	</build>
+
 </project>

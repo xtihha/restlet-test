@@ -1,0 +1,6 @@
+V0.1 可运行的rest+spring配置
+V0.2 可连接DB的配置
+V0.3 集成log4j配置
+V0.4 支持多profile配置
+V0.5 支持freemarker
+V0.6 独立的内置jetty配置
