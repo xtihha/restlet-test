@@ -1,4 +1,4 @@
-package log;
+package com.xtihha.study.restlet.log;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 import com.xtihha.study.restlet.context.ContextListener;
 
 /**
- * 
  * 
  * @author zhangxiaohu
  * @created 2013-7-13
