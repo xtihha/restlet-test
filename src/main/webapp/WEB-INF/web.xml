@@ -9,6 +9,7 @@
     
     <context-param>
         <param-name>contextConfigLocation</param-name>
+        <!-- add src/main/resouce to build path -->
         <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
     <listener>

@@ -5,18 +5,20 @@ import java.util.Date;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-public class ContextListener implements ServletContextListener{
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class ContextListener implements ServletContextListener {
+    private static final Logger logger = LoggerFactory.getLogger(ContextListener.class);
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        System.out.println("Context initizlized at " + new Date());
+        logger.debug("Context initizlized at " + new Date());
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        System.out.println("Context destroyed at " + new Date());
+        logger.info("Context destroyed at " + new Date());
     }
-
-  
-
+    
 }

@@ -3,4 +3,5 @@ V0.2 可连接DB的配置
 V0.3 集成log4j配置
 V0.4 支持多profile配置
 V0.5 支持freemarker
-V0.6 独立的内置jetty配置
+V0.6 web.xml支持多种servlet；restlet-servlet支持二级路径映射
+V0.7 独立的内置jetty配置
