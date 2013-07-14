@@ -11,8 +11,6 @@ import com.xtihha.study.restlet.domain.Student;
 import com.xtihha.study.restlet.manager.ServiceManager;
 
 /**
- * 
- * 
  * @author zhangxiaohu
  * @created 2013-7-14
  */
@@ -28,6 +26,10 @@ public class StudentResource extends ServerResource {
         String idStr = (String) getRequest().getAttributes().get("id");
         long id = Long.parseLong(idStr);
         Student student = serviceManager.getStudent(id);
+        if (student == null) {
+            String value = new StringBuilder().append("{").append("\"error\":").append("\"invalid param\"").append("}").toString();
+            return new JsonRepresentation(value);
+        }
 
         String value = new StringBuilder().append("{").append("\"data\":{").append("\"id\":")
                 .append(student.getId()).append(",").append("\"name\":").append("\"")
