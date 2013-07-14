@@ -32,7 +32,8 @@ public class StudentResource extends ServerResource {
         String value = new StringBuilder().append("{").append("\"data\":{").append("\"id\":")
                 .append(student.getId()).append(",").append("\"name\":").append("\"")
                 .append(student.getName()).append("\"").append(",").append("\"department\":")
-                .append(student.getDepartment()).append("\"").append("}").append("}").toString();
+                .append("\"").append(student.getDepartment()).append("\"").append("}").append("}")
+                .toString();
 
         logger.info(value);
 
