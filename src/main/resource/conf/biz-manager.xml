@@ -2,11 +2,6 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
     default-autowire="byName">
-
-    <bean id="sqlFactoryBuilder" class="com.xtihha.study.restlet.db.conf.SqlFactoryBuilder">
-        <constructor-arg index="0" value="db/MyBatisConfig.xml" />
-    </bean>
     
-    <!--for property sqlFactoryBuild, auto wired by name  -->
-    <bean id="studentDao" class="com.xtihha.study.restlet.db.impl.StudentDaoImpl" />
+    <bean id="serviceManager" class="com.xtihha.study.restlet.manager.ServiceManager" />
 </beans>

@@ -7,5 +7,6 @@
     <!-- add src/main/resource to classpath -->
     <import resource="classpath:conf/restlet-servlet.xml" />
     <import resource="classpath:conf/biz-dao.xml" />
+    <import resource="classpath:conf/biz-manager.xml" />
 
 </beans>

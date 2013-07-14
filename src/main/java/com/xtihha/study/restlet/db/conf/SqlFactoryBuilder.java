@@ -19,6 +19,7 @@ public class SqlFactoryBuilder {
     private static final Logger logger = LoggerFactory.getLogger(SqlFactoryBuilder.class);
 
     public SqlFactoryBuilder(String batisCfgPath) throws Exception {
+        logger.info("MyBatis config path : {}", batisCfgPath);
         try {
             factory = new SqlSessionFactoryBuilder().build(Resources
                     .getResourceAsReader(batisCfgPath));

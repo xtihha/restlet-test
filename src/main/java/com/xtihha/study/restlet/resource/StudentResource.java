@@ -7,8 +7,8 @@ import org.restlet.resource.ServerResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.xtihha.study.restlet.db.IStudentDao;
 import com.xtihha.study.restlet.domain.Student;
+import com.xtihha.study.restlet.manager.ServiceManager;
 
 /**
  * 
@@ -19,8 +19,7 @@ import com.xtihha.study.restlet.domain.Student;
 
 public class StudentResource extends ServerResource {
 
-    // TODO use dao manager
-    private IStudentDao studentDao;
+    private ServiceManager serviceManager;
 
     private static final Logger logger = LoggerFactory.getLogger(StudentResource.class);
 
@@ -28,7 +27,7 @@ public class StudentResource extends ServerResource {
     public Representation get() {
         String idStr = (String) getRequest().getAttributes().get("id");
         long id = Long.parseLong(idStr);
-        Student student = studentDao.get(id);
+        Student student = serviceManager.getStudent(id);
 
         String value = new StringBuilder().append("{").append("\"data\":{").append("\"id\":")
                 .append(student.getId()).append(",").append("\"name\":").append("\"")
@@ -41,8 +40,8 @@ public class StudentResource extends ServerResource {
         return ret;
     }
 
-    public void setStudentDao(IStudentDao studentDao) {
-        this.studentDao = studentDao;
+    public void setServiceManager(ServiceManager serviceManager) {
+        this.serviceManager = serviceManager;
     }
 
 }
