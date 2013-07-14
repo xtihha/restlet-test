@@ -3,7 +3,10 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
     default-autowire="byName">
 
-    <bean id="itemResource" class="com.xtihha.study.restlet.resource.ItemResource" scope="prototype" />
-    <bean id="studentResource" class="com.xtihha.study.restlet.resource.StudentResource" scope="prototype" />
+    <bean id="sqlFactoryBuilder" class="com.xtihha.study.restlet.db.conf.SqlFactoryBuilder">
+        <constructor-arg index="0" value="db/MyBatisConfig.xml" />
+    </bean>
 
+    <!--for property sqlFactoryBuild, auto wired by name  -->
+    <bean id="studentDao" class="com.xtihha.study.restlet.db.impl.StudentDaoImpl" />
 </beans>

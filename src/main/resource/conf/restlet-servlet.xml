@@ -3,10 +3,8 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
     default-autowire="byName">
 
-    <!-- 
-        biz-resource.xml is at the same folder with rest-servlet.xml
-        <import resource="biz-resource.xml" /> 
-    -->
+    <!-- biz-resource.xml is at the same folder with rest-servlet.xml <import resource="biz-resource.xml" 
+        /> -->
     <import resource="classpath:conf/biz-resource.xml" />
 
     <bean id="component" class="org.restlet.ext.spring.SpringComponent">
@@ -25,10 +23,9 @@
                     </bean>
                 </entry>
 
-                <!-- Deprecated -->
-                <entry key="/echo.{format}">
+                <entry key="/student/{id}">
                     <bean class="org.restlet.ext.spring.SpringFinder">
-                        <lookup-method name="create" bean="echoResource" />
+                        <lookup-method name="create" bean="studentResource" />
                     </bean>
                 </entry>
 

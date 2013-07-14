@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db/db.properties">
+        <property name="project_path" value="com.xtihha.study.restlet" />
+    </properties>
+    <settings>
+        <setting name="cacheEnabled" value="false" />
+    </settings>
+    <!-- 
+    <typeAliases>
+        <typeAlias alias="Student" type="${project_path}/domain/Student"></typeAlias>
+    </typeAliases>
+     -->
+    <environments default="${environment}">
+        <environment id="dev">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}" />
+                <property name="url" value="${url}" />
+                <property name="username" value="${username}" />
+                <property name="password" value="${password}" />
+                
+                <property name="poolMaximumActiveConnections" value="15" />
+                <property name="poolMaximumIdleConnections" value="5" />
+            </dataSource>
+        </environment>
+        <environment id="deploy">
+            <transactionManager type="JDBC" />
+            <dataSource type="JNDI">
+                <property name="data_source" value="jdbc/xxxOnLineDS" />
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="db/mapper/Student.xml" />
+    </mappers>
+</configuration>
