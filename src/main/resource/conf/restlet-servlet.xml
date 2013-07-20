@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
-    default-autowire="byName">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName">
 
     <!-- biz-resource.xml is at the same folder with rest-servlet.xml <import resource="biz-resource.xml" 
         /> -->
-    <import resource="classpath:conf/biz-resource.xml" />
+    <import resource="classpath:conf/biz-resource.xml"/>
 
     <bean id="component" class="org.restlet.ext.spring.SpringComponent">
-        <property name="defaultTarget" ref="application" />
+        <property name="defaultTarget" ref="application"/>
     </bean>
     <bean id="application" class="org.restlet.Application">
-        <property name="root" ref="restRoute" />
+        <property name="root" ref="restRoute"/>
     </bean>
 
     <bean name="restRoute" class="org.restlet.ext.spring.SpringRouter">
@@ -19,13 +19,19 @@
             <map>
                 <entry key="/item/{id}">
                     <bean class="org.restlet.ext.spring.SpringFinder">
-                        <lookup-method name="create" bean="itemResource" />
+                        <lookup-method name="create" bean="itemResource"/>
                     </bean>
                 </entry>
 
                 <entry key="/student/{id}">
                     <bean class="org.restlet.ext.spring.SpringFinder">
-                        <lookup-method name="create" bean="studentResource" />
+                        <lookup-method name="create" bean="studentResource"/>
+                    </bean>
+                </entry>
+
+                <entry key="/echo">
+                    <bean class="org.restlet.ext.spring.SpringFinder">
+                        <lookup-method name="create" bean="echoResource"/>
                     </bean>
                 </entry>
 
