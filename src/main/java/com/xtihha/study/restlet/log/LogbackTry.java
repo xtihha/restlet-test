@@ -27,6 +27,8 @@ public class LogbackTry {
         ContextListener listener = new ContextListener();
         listener.contextInitialized(null);
         listener.contextDestroyed(null);
+
+        logger.info(ClassLoader.getSystemResource("db/dump.xml").getPath());
     }
 
 }

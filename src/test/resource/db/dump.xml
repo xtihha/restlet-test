@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <student id="1" name="s1" department="cs"/>
+  <student id="2" name="s2" department="cs"/>
+  <department id="1" name="cs1" remark="remark1"/>
+  <department id="2" name="cs2" remark="remark2"/>
+</dataset>
