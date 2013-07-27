@@ -1,6 +1,5 @@
 package com.xtihha.study.restlet.db;
 
-import junit.framework.Assert;
 import org.dbunit.DBTestCase;
 import org.dbunit.PropertiesBasedJdbcDatabaseTester;
 import org.dbunit.dataset.IDataSet;
@@ -19,6 +18,7 @@ import java.io.FileInputStream;
  */
 public class StudentDaoTest extends DBTestCase {
     private static final Logger logger = LoggerFactory.getLogger(StudentDaoTest.class);
+    private IDataSet dataset;
 
     public StudentDaoTest() {
         System.setProperty(PropertiesBasedJdbcDatabaseTester.DBUNIT_DRIVER_CLASS, "com.mysql.jdbc.Driver");
@@ -33,23 +33,39 @@ public class StudentDaoTest extends DBTestCase {
         return new FlatXmlDataSet(new FileInputStream(dbFilePath));
     }
 
+    /**
+     * 需要override TestCase里面的方法，测试无法使用@Before @BeforeClass
+     *
+     * @throws Exception
+     */
+    @Override
+    public void setUp() throws Exception {
+        super.setUp();
+        dataset = getDataSet();
+        logger.info("consturct dataset successfully");
+    }
+
     @Test
-    public void testGetStudent() throws Exception {
-        IDataSet dataset = getDataSet();
-        ITable table = getDataSet().getTable("student");
+    public void testGet() throws Exception {
+        ITable table = dataset.getTable("student");
         long id = Long.parseLong((String) table.getValue(0, "id"));
         String name = (String) table.getValue(0, "name");
-        Assert.assertTrue(id == 1L);
-        Assert.assertEquals(name, "s1");
+        assertTrue(id == 1L);
+        assertEquals(name, "s1");
 
-        table = getDataSet().getTable("department");
+        table = dataset.getTable("department");
         id = Long.parseLong((String) table.getValue(0, "id"));
         name = (String) table.getValue(0, "name");
         String remark = (String) table.getValue(0, "remark");
 
-        Assert.assertTrue(id == 1L);
-        Assert.assertEquals(name, "cs1");
-        Assert.assertEquals(remark, "remark1");
-        Assert.assertFalse(id == 2L);
+        assertTrue(id == 1L);
+        assertEquals(name, "cs1");
+        assertEquals(remark, "remark1");
+        assertFalse(id == 2L);
+    }
+
+    @Override
+    public void tearDown() {
+        logger.info("tear down...");
     }
 }

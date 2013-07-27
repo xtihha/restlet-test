@@ -8,9 +8,7 @@ import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * User: zhangxiaohu
@@ -35,6 +33,7 @@ public class ServiceManagerTest {
 
     @Before
     public void before() {
+        logger.info("before...");
         serviceManager = new ServiceManager();
         student = new Student();
 
@@ -45,7 +44,7 @@ public class ServiceManagerTest {
 
     @After
     public void after() {
-
+        logger.info("after...");
     }
 
     @Test
