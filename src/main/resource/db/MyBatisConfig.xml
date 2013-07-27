@@ -2,20 +2,20 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <properties resource="db/db.properties">
-        <property name="project_path" value="com.xtihha.study.restlet" />
-    </properties>
+    <!--<properties resource="db/db.properties">-->
+        <!--<property name="project_path" value="com.xtihha.study.restlet" />-->
+    <!--</properties>-->
     <settings>
         <setting name="cacheEnabled" value="false" />
     </settings>
-    <environments default="${environment}">
+    <environments default="${db.environment}">
         <environment id="dev">
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
-                <property name="driver" value="${driver}" />
-                <property name="url" value="${url}" />
-                <property name="username" value="${username}" />
-                <property name="password" value="${password}" />
+                <property name="driver" value="${db.driver}" />
+                <property name="url" value="${db.url}" />
+                <property name="username" value="${db.username}" />
+                <property name="password" value="${db.password}" />
 
                 <property name="poolMaximumActiveConnections" value="15" />
                 <property name="poolMaximumIdleConnections" value="5" />

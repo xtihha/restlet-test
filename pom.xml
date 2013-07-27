@@ -98,6 +98,7 @@
         <!--<artifactId>commons-logging</artifactId>-->
         <!--<version>${commons-logging.version}</version>-->
         <!--</dependency>-->
+
         <!-- download logback-core-version.jar/slf4j-api-version.jar automatically -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -129,14 +130,50 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env>dev</env>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>online</id>
+            <properties>
+                <env>online</env>
+            </properties>
+            <!--<build>-->
+                <!--<filters>-->
+                    <!--<filter>src/main/profiles/filter/filter-online.properties</filter>-->
+                <!--</filters>-->
+                <!--<resources>-->
+                    <!--<resource>-->
+                        <!--<directory>src/main/resource</directory>-->
+                        <!--<filtering>true</filtering>-->
+                    <!--</resource>-->
+                <!--</resources>-->
+            <!--</build>-->
+        </profile>
+    </profiles>
+
     <build>
         <finalName>restlet-test</finalName>
+        <filters>
+            <filter>src/main/profiles/filter/filter-${env}.properties</filter>
+        </filters>
+
         <resources>
             <resource>
                 <directory>src/main/resource</directory>
+                <filtering>true</filtering>
             </resource>
             <resource>
                 <directory>src/test/resource</directory>
+                <filtering>true</filtering>
             </resource>
         </resources>
 
