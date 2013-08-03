@@ -70,6 +70,16 @@
             <artifactId>spring-web</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${org.springframework-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>taglibs</groupId>
+            <artifactId>standard</artifactId>
+            <version>1.1.2</version>
+        </dependency>
 
         <dependency>
             <groupId>org.restlet.jee</groupId>
@@ -93,11 +103,11 @@
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>commons-logging</groupId>-->
-        <!--<artifactId>commons-logging</artifactId>-->
-        <!--<version>${commons-logging.version}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+            <version>${commons-logging.version}</version>
+        </dependency>
 
         <!-- download logback-core-version.jar/slf4j-api-version.jar automatically -->
         <dependency>
@@ -147,15 +157,15 @@
                 <env>online</env>
             </properties>
             <!--<build>-->
-                <!--<filters>-->
-                    <!--<filter>src/main/profiles/filter/filter-online.properties</filter>-->
-                <!--</filters>-->
-                <!--<resources>-->
-                    <!--<resource>-->
-                        <!--<directory>src/main/resource</directory>-->
-                        <!--<filtering>true</filtering>-->
-                    <!--</resource>-->
-                <!--</resources>-->
+            <!--<filters>-->
+            <!--<filter>src/main/profiles/filter/filter-online.properties</filter>-->
+            <!--</filters>-->
+            <!--<resources>-->
+            <!--<resource>-->
+            <!--<directory>src/main/resource</directory>-->
+            <!--<filtering>true</filtering>-->
+            <!--</resource>-->
+            <!--</resources>-->
             <!--</build>-->
         </profile>
     </profiles>

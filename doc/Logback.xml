@@ -35,9 +35,9 @@
 	<logger name="com.xtihha.study.restlet.context" level="DEBUG" additivity="true">
 	    <appender-ref ref="FILE" />
 	</logger>
-	<logger name="java.sql.Connection" level="DEBUG" />
-	<logger name="java.sql.Statement" level="DEBUG" />
-	<logger name="java.sql.PreparedStatement" level="DEBUG" />
+	<logger name="java.sql.Connection" level="INFO" />
+	<logger name="java.sql.Statement" level="INFO" />
+	<logger name="java.sql.PreparedStatement" level="INFO" />
 
 	<!-- 日志输出级别 -->
 	<root level="INFO">

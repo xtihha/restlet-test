@@ -7,13 +7,13 @@
         <listener-class>com.xtihha.study.restlet.context.ContextListener</listener-class>
     </listener>
     
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>WEB-INF/applicationContext.xml</param-value>
     </context-param>
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
 
     <servlet>
         <servlet-name>restlet-test-servlet</servlet-name>
@@ -23,10 +23,26 @@
             <param-value>component</param-value>
         </init-param>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>restlet-test-servlet</servlet-name>
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
-             
+
+
+    <!--独立的DispatcherServlet-->
+    <servlet>
+        <servlet-name>spring-mvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- 如果未有下面的设置，则默认寻找 spring-mvc-servlet.xml-->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring-mvc-config.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>spring-mvc</servlet-name>
+        <url-pattern>/mvc/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>
