@@ -1,6 +1,5 @@
 package com.xtihha.study.restlet.log;
 
-import com.xtihha.study.restlet.context.ContextListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,9 +21,9 @@ public class LogbackTry {
         logger.warn("warn");
         logger.error("error");
 
-        ContextListener listener = new ContextListener();
-        listener.contextInitialized(null);
-        listener.contextDestroyed(null);
+//        ContextListener listener = new ContextListener();
+//        listener.contextInitialized(null);
+//        listener.contextDestroyed(null);
 
         //需要确认resource文件夹的在classpath的路径，需要在pom.xml的build处设置
         logger.info(ClassLoader.getSystemResource("db/dump.xml").getPath());
