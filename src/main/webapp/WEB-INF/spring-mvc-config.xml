@@ -27,6 +27,7 @@
         <property name="contentType" value="text/html; charset=utf-8"/>
         <property name="cache" value="true"/>
         <property name="suffix" value=".ftl"/>
+        <!--同时存在jsp和ftl的view resolver，可以通过order属性进行顺序配置-->
         <property name="order" value="0"/>
     </bean>
 

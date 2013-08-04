@@ -6,5 +6,6 @@
     <bean id="itemResource" class="com.xtihha.study.restlet.resource.ItemResource" scope="prototype"/>
     <bean id="studentResource" class="com.xtihha.study.restlet.resource.StudentResource" scope="prototype"/>
     <bean id="echoResource" class="com.xtihha.study.restlet.resource.EchoResource" scope="prototype"/>
+    <bean id="userFavoriteResource" class="com.xtihha.study.restlet.resource.UserFavoriteResource" scope="prototype"/>
 
 </beans>
