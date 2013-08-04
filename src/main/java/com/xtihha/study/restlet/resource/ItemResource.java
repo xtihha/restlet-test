@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ItemResource extends ServerResource {
+    private int counter = 0;
     private static final Logger logger = LoggerFactory.getLogger(ItemResource.class);
 
     @Get
@@ -19,6 +20,9 @@ public class ItemResource extends ServerResource {
         logger.info("value = " + value);
 
         JsonRepresentation ret = new JsonRepresentation(value);
+
+        //scope为prototype，每次打印都为1
+        logger.info("ItemResource counter = {}", ++counter);
         return ret;
     }
 }

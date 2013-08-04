@@ -8,8 +8,12 @@
                            http://www.springframework.org/schema/context/spring-context.xsd">
     <!--上面的xsi:schemaLocation需要补充完整 -->
 
-    <!-- 用来自动探测@Controller标签的服务类 -->
-    <context:component-scan base-package="com.xtihha.study.restlet"></context:component-scan>
+    <!-- 用来自动探测@Controller等标签的服务类 -->
+    <context:component-scan base-package="com.xtihha.study.restlet" />
+
+    <bean id="annotationManager" class="com.xtihha.study.restlet.manager.annotation.AnnotationManager" />
+    <!--<bean id="annotation2Manager" class="com.xtihha.study.restlet.manager.annotation.Annotation2Manager" />-->
+
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/jsp/"/>
