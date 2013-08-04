@@ -1,4 +1,4 @@
-package com.xtihha.study.restlet.servlet;
+package com.xtihha.study.restlet.service;
 
 import com.xtihha.study.restlet.manager.annotation.Annotation2Manager;
 import com.xtihha.study.restlet.manager.annotation.AnnotationManager;
@@ -6,11 +6,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 
@@ -29,7 +30,6 @@ public class DemoController {
     @Autowired
     @Qualifier("annotationManager")
     private AnnotationManager mgr;
-
     /**
      * 根据名称进行annotation注入
      */
@@ -46,4 +46,19 @@ public class DemoController {
 
         return "demo"; //demo.jsp
     }
+
+    @RequestMapping(value = "/demo2", method = RequestMethod.GET)
+    public String demoWithParam(@RequestParam("id") String demoId, ModelMap model) {
+        String ret = "get param, id=" + demoId;
+        model.addAttribute("message", ret);
+        return "demo";
+    }
+
+    @RequestMapping(value = "/demo3/{id}", method = RequestMethod.GET)
+    public String demoWithParam2(@PathVariable("id") String demoId, ModelMap model){
+        String ret = "get param with rest, id=" + demoId;
+        model.addAttribute("message", ret);
+        return "demo";
+    }
+
 }
