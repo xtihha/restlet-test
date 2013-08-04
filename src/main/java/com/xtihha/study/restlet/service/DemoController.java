@@ -48,10 +48,11 @@ public class DemoController {
     @RequestMapping(value = "/demo", method = RequestMethod.GET)
     public void help(HttpServletRequest req, HttpServletResponse res) throws IOException {
         StringBuilder sb = new StringBuilder();
-        sb.append("/demo1").append("\t").append("resolve by viewResolver").append("\n");
-        sb.append("/demo2?id=xx").append("\t").append("resolve by viewResolver").append("\n");
-        sb.append("/demo3/{id}").append("\t").append("resolve by viewResolver").append("\n");
+        sb.append("/demo1").append("\t").append("resolve by jsp viewResolver").append("\n");
+        sb.append("/demo2?id=xx").append("\t").append("resolve by jsp viewResolver").append("\n");
+        sb.append("/demo3/{id}").append("\t").append("resolve by jsp viewResolver").append("\n");
         sb.append("/demo4/{id}").append("\t").append("directly write through").append("\n");
+        sb.append("/demo5").append("\t").append(" resolve by freemarker viewResolver").append("\n");
 
         res.getWriter().write(sb.toString());
     }
@@ -64,23 +65,23 @@ public class DemoController {
         mgr.hello();
         mgr2.hello2();
 
-        //ViewResolver会自动解析文件路径，增补为${prefix}folder/demo2${suffix}
+        //ViewResolver会自动解析文件路径，增补为${prefix}jsp/demo2${suffix}
         // 其中一般prefix定义为/WEB-INF/jsp, suffix定义为.jsp
-        return "folder/demo2"; //demo2.jsp
+        return "jsp/demo2"; //demo2.jsp
     }
 
     @RequestMapping(value = "/demo2", method = RequestMethod.GET)
     public String demoWithParam2(@RequestParam("id") String demoId, ModelMap model) {
         String ret = "get param2, id=" + demoId;
         model.addAttribute("message", ret);
-        return "folder/demo2";
+        return "jsp/demo2";
     }
 
     @RequestMapping(value = "/demo3/{id}", method = RequestMethod.GET)
     public String demoWithParam3(@PathVariable("id") String demoId, ModelMap model) {
         String ret = "get param3 with rest, id=" + demoId;
         model.addAttribute("message", ret);
-        return "folder/demo2";
+        return "jsp/demo2";
     }
 
     @RequestMapping(value = "/demo4/{id}", method = RequestMethod.GET)
@@ -89,6 +90,12 @@ public class DemoController {
                                HttpServletResponse response) throws IOException {
         String ret = "get param4 with rest, id=" + demoId;
         response.getWriter().write(ret);
+    }
+
+    @RequestMapping(value = "/demo5")
+    public String demo5(ModelMap model, HttpServletRequest req, HttpServletResponse res) {
+        model.addAttribute("msg", "this is demo5");
+        return "ftl/demo";
     }
 
 }

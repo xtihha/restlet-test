@@ -5,20 +5,52 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
-                           http://www.springframework.org/schema/context/spring-context.xsd
-                           http://www.springframework.org/schema/mvc
-                           http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+                           http://www.springframework.org/schema/context/spring-context.xsd">
     <!--上面的xsi:schemaLocation需要补充完整 -->
 
     <!-- 用来自动探测@Controller等标签的服务类 -->
-    <context:component-scan base-package="com.xtihha.study.restlet" />
+    <context:component-scan base-package="com.xtihha.study.restlet"/>
 
-    <bean id="annotationManager" class="com.xtihha.study.restlet.manager.annotation.AnnotationManager" />
+    <bean id="annotationManager" class="com.xtihha.study.restlet.manager.annotation.AnnotationManager"/>
     <!--<bean id="annotation2Manager" class="com.xtihha.study.restlet.manager.annotation.Annotation2Manager" />-->
 
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/jsp/"/>
+    <bean id="viewResolverJsp" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>-->
+        <property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/>
+        <property name="prefix" value="/WEB-INF/view/"/>
         <property name="suffix" value=".jsp"/>
+        <property name="order" value="1"/>
     </bean>
+
+    <bean id="viewResolverFtl" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="contentType" value="text/html; charset=utf-8"/>
+        <property name="cache" value="true"/>
+        <property name="suffix" value=".ftl"/>
+        <property name="order" value="0"/>
+    </bean>
+
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/view/"/>
+        <property name="freemarkerVariables">
+            <map>
+                <entry key="xml_escape" value-ref="fmXmlEscape"/>
+            </map>
+        </property>
+        <property name="defaultEncoding">
+            <value>utf-8</value>
+        </property>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">0</prop>
+                <prop key="default_encoding">UTF-8</prop>
+                <prop key="locale">zh_CN</prop>
+                <prop key="url_escaping_charset">UTF-8</prop>
+                <prop key="whitespace_stripping">true</prop>
+                <prop key="classic_compatible">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
 </beans>

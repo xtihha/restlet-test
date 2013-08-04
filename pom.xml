@@ -75,10 +75,16 @@
             <artifactId>spring-webmvc</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>taglibs</groupId>-->
+            <!--<artifactId>standard</artifactId>-->
+            <!--<version>1.1.2</version>-->
+        <!--</dependency>-->
+        <!--freemarker-->
         <dependency>
-            <groupId>taglibs</groupId>
-            <artifactId>standard</artifactId>
-            <version>1.1.2</version>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.19</version>
         </dependency>
 
         <dependency>

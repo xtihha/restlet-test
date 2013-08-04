@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1>${message}</h1>
-    <h1>test in folder</h1>
+    <h1>test in jsp folder</h1>
 </body>
 </html>
