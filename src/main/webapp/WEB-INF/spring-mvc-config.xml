@@ -11,27 +11,35 @@
     <!-- 用来自动探测@Controller等标签的服务类 -->
     <context:component-scan base-package="com.xtihha.study.restlet"/>
 
-    <bean id="annotationManager" class="com.xtihha.study.restlet.manager.annotation.AnnotationManager"/>
-    <!--<bean id="annotation2Manager" class="com.xtihha.study.restlet.manager.annotation.Annotation2Manager" />-->
+    <bean id="annotationManager"
+          class="com.xtihha.study.restlet.manager.annotation.AnnotationManager"/>
+    <!--<bean id="annotation2Manager" class="com.xtihha.study.restlet.manager.annotation.Annotation2Manager"
+        /> -->
 
-    <bean id="viewResolverJsp" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>-->
-        <property name="viewClass" value="org.springframework.web.servlet.view.InternalResourceView"/>
+    <!--通过order属性可以实现多个ViewResolver -->
+    <bean id="viewResolverJsp"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> -->
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.InternalResourceView"/>
         <property name="prefix" value="/WEB-INF/view/"/>
         <property name="suffix" value=".jsp"/>
         <property name="order" value="1"/>
     </bean>
 
-    <bean id="viewResolverFtl" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+    <bean id="viewResolverFtl"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass"
+                  value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
         <property name="contentType" value="text/html; charset=utf-8"/>
         <property name="cache" value="true"/>
         <property name="suffix" value=".ftl"/>
-        <!--同时存在jsp和ftl的view resolver，可以通过order属性进行顺序配置-->
+        <!--同时存在jsp和ftl的view resolver，可以通过order属性进行顺序配置 -->
         <property name="order" value="0"/>
     </bean>
 
-    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+    <bean id="freemarkerConfig"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/WEB-INF/view/"/>
         <property name="freemarkerVariables">
             <map>
@@ -54,4 +62,28 @@
     </bean>
 
     <bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
+
+    <!--
+    如果注释后面的urlMapping，才可以通过定义的bean name进行url mapping处理
+    目前测试发现直接通过bean name和urlMapping无法同存
+    -->
+    <bean id="primitivedemo" name="/primitivedemo"
+          class="com.xtihha.study.restlet.service.PrimitiveDemoController">
+        <property name="viewName" value="ftl/primitivedemo"/>
+    </bean>
+
+    <bean id="primitivedemo2" class="com.xtihha.study.restlet.service.PrimitiveDemoController">
+        <property name="viewName" value="ftl/primitivedemo"/>
+    </bean>
+
+    <!--如果使用url mapping，也会让程序里的@Controller annotation失效 -->
+    <!--<bean id="urlMapping"-->
+          <!--class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">-->
+        <!--<property name="mappings">-->
+            <!--<props>-->
+                <!--<prop key="/primitivedemo">primitivedemo</prop>-->
+                <!--<prop key="/primitivedemo2">primitivedemo2</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
 </beans>
