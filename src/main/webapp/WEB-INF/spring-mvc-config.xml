@@ -2,14 +2,20 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                            http://www.springframework.org/schema/beans/spring-beans.xsd
                            http://www.springframework.org/schema/context
-                           http://www.springframework.org/schema/context/spring-context.xsd">
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <!--上面的xsi:schemaLocation需要补充完整 -->
 
     <!-- 用来自动探测@Controller等标签的服务类 -->
     <context:component-scan base-package="com.xtihha.study.restlet"/>
+
+    <!-- @ResponseBody? -->
+    <mvc:annotation-driven />
 
     <bean id="annotationManager"
           class="com.xtihha.study.restlet.manager.annotation.AnnotationManager"/>
